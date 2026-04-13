@@ -1,0 +1,1487 @@
+  {
+    "StudyPlan": [
+      {
+        "Date": null,
+        "Day": "Monday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Tuesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Wednesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Thursday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Friday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Saturday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Sunday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Monday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Tuesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Wednesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Thursday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Friday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Saturday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Sunday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Monday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Tuesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Wednesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Thursday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Friday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Saturday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Sunday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Monday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Tuesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Wednesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Thursday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Friday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Saturday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Sunday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Monday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Tuesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Wednesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Thursday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Friday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Saturday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Sunday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Monday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Tuesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Wednesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Thursday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Friday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Saturday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Sunday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Monday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Tuesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Wednesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Thursday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Friday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Saturday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Sunday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Monday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Tuesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Wednesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Thursday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Friday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Saturday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Sunday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Monday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Tuesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Wednesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Thursday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Friday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Saturday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Sunday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Monday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Tuesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Wednesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Thursday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Friday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Saturday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Sunday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Monday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Tuesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Wednesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Thursday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Friday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Saturday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Sunday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Monday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Tuesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Wednesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Thursday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Friday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Saturday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Sunday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Monday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Tuesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Wednesday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Thursday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Friday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      },
+      {
+        "Date": null,
+        "Day": "Saturday",
+        "Focus": "Vocab + Grammar",
+        "Vocab IDs": "V001–V015",
+        "Grammar IDs": "G001–G002",
+        "Study Time (min)": "",
+        "Completed (✔)": false,
+        "Completion %": 0.0,
+        "Notes": ""
+      }
+    ],
+    "Vocabulary": [
+      {
+        "Vocab ID": "V001",
+        "Word": "判断",
+        "Pronunciation": "はんだん",
+        "Meaning": "judgment",
+        "Example": "状況を判断する",
+        "Learned (✔)": false,
+        "Review D+1": "null",
+        "Review D+7": "null",
+        "Review D+14": "null"
+      },
+      {
+        "Vocab ID": "V002",
+        "Word": "実施",
+        "Pronunciation": "じっし",
+        "Meaning": "implementation",
+        "Example": "計画を実施する",
+        "Learned (✔)": false,
+        "Review D+1": "null",
+        "Review D+7": "null",
+        "Review D+14": "null"
+      },
+      {
+        "Vocab ID": "V003",
+        "Word": "対応",
+        "Pronunciation": "たいおう",
+        "Meaning": "response",
+        "Example": "問題に対応する",
+        "Learned (✔)": false,
+        "Review D+1": "null",
+        "Review D+7": "null",
+        "Review D+14": "null"
+      },
+      {
+        "Vocab ID": "V004",
+        "Word": "影響",
+        "Pronunciation": "えいきょう",
+        "Meaning": "influence",
+        "Example": "影響を受ける",
+        "Learned (✔)": false,
+        "Review D+1": "null",
+        "Review D+7": "null",
+        "Review D+14": "null"
+      },
+      {
+        "Vocab ID": "V005",
+        "Word": "改善",
+        "Pronunciation": "かいぜん",
+        "Meaning": "improvement",
+        "Example": "改善が必要",
+        "Learned (✔)": false,
+        "Review D+1": "null",
+        "Review D+7": "null",
+        "Review D+14": "null"
+      },
+      {
+        "Vocab ID": "V006",
+        "Word": "確保",
+        "Pronunciation": "かくほ",
+        "Meaning": "secure; ensure",
+        "Example": "時間を確保する",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V007",
+        "Word": "維持",
+        "Pronunciation": "いじ",
+        "Meaning": "maintain",
+        "Example": "健康を維持する",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V008",
+        "Word": "促進",
+        "Pronunciation": "そくしん",
+        "Meaning": "promote; accelerate",
+        "Example": "販売を促進する",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V009",
+        "Word": "導入",
+        "Pronunciation": "どうにゅう",
+        "Meaning": "introduce; implement",
+        "Example": "新しい制度を導入する",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V010",
+        "Word": "削減",
+        "Pronunciation": "さくげん",
+        "Meaning": "reduce; cut down",
+        "Example": "コストを削減する",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V011",
+        "Word": "抽象的",
+        "Pronunciation": "ちゅうしょうてき",
+        "Meaning": "abstract",
+        "Example": "抽象的な表現を避ける",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V012",
+        "Word": "具体的",
+        "Pronunciation": "ぐたいてき",
+        "Meaning": "concrete; specific",
+        "Example": "具体的に説明する",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V013",
+        "Word": "予測",
+        "Pronunciation": "よそく",
+        "Meaning": "predict; forecast",
+        "Example": "結果を予測する",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V014",
+        "Word": "傾向",
+        "Pronunciation": "けいこう",
+        "Meaning": "tendency; trend",
+        "Example": "最近の傾向を見る",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V015",
+        "Word": "根拠",
+        "Pronunciation": "こんきょ",
+        "Meaning": "basis; grounds",
+        "Example": "根拠を示す",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V016",
+        "Word": "要因",
+        "Pronunciation": "よういん",
+        "Meaning": "factor; cause",
+        "Example": "成功の要因を分析する",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V017",
+        "Word": "承認",
+        "Pronunciation": "しょうにん",
+        "Meaning": "approval",
+        "Example": "申請が承認された",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V018",
+        "Word": "申請",
+        "Pronunciation": "しんせい",
+        "Meaning": "application (formal request)",
+        "Example": "申請書を提出する",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V019",
+        "Word": "達成",
+        "Pronunciation": "たっせい",
+        "Meaning": "achievement; accomplish",
+        "Example": "目標を達成する",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V020",
+        "Word": "継続",
+        "Pronunciation": "けいぞく",
+        "Meaning": "continuation; continue",
+        "Example": "努力を継続する",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V021",
+        "Word": "整備",
+        "Pronunciation": "せいび",
+        "Meaning": "maintenance; development; set up",
+        "Example": "環境を整備する",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V022",
+        "Word": "推進",
+        "Pronunciation": "すいしん",
+        "Meaning": "promote; drive forward",
+        "Example": "改革を推進する",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V023",
+        "Word": "見直し",
+        "Pronunciation": "みなおし",
+        "Meaning": "review; reconsideration",
+        "Example": "計画の見直しが必要だ",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V024",
+        "Word": "把握",
+        "Pronunciation": "はあく",
+        "Meaning": "grasp; understand",
+        "Example": "状況を把握する",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V025",
+        "Word": "配慮",
+        "Pronunciation": "はいりょ",
+        "Meaning": "consideration; care",
+        "Example": "相手に配慮する",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V026",
+        "Word": "徹底",
+        "Pronunciation": "てってい",
+        "Meaning": "thoroughness; strict enforcement",
+        "Example": "ルールを徹底する",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V027",
+        "Word": "影響力",
+        "Pronunciation": "えいきょうりょく",
+        "Meaning": "influence; impact",
+        "Example": "彼は影響力がある",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V028",
+        "Word": "対策",
+        "Pronunciation": "たいさく",
+        "Meaning": "measure; countermeasure",
+        "Example": "問題への対策を立てる",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V029",
+        "Word": "費用",
+        "Pronunciation": "ひよう",
+        "Meaning": "expense; cost",
+        "Example": "費用がかかる",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      },
+      {
+        "Vocab ID": "V030",
+        "Word": "手順",
+        "Pronunciation": "てじゅん",
+        "Meaning": "procedure; steps",
+        "Example": "手順を確認する",
+        "Learned (✔)": false,
+        "Review D+1": null,
+        "Review D+7": null,
+        "Review D+14": null
+      }
+    ],
+    "Grammar": [
+      {
+        "Grammar ID": "G001",
+        "Pattern": "～に違いない",
+        "Meaning": "must be",
+        "Example": "彼は忙しいに違いない",
+        "Mastered (✔)": true
+      },
+      {
+        "Grammar ID": "G002",
+        "Pattern": "～わけではない",
+        "Meaning": "not necessarily",
+        "Example": "嫌いなわけではない",
+        "Mastered (✔)": true
+      },
+      {
+        "Grammar ID": "G003",
+        "Pattern": "～ことになる",
+        "Meaning": "it is decided",
+        "Example": "行くことになった",
+        "Mastered (✔)": true
+      },
+      {
+        "Grammar ID": "G004",
+        "Pattern": "～に加えて",
+        "Meaning": "in addition to",
+        "Example": "仕事に加えて勉強もしている",
+        "Mastered (✔)": false
+      },
+      {
+        "Grammar ID": "G005",
+        "Pattern": "～に伴って",
+        "Meaning": "as; along with",
+        "Example": "経済の発展に伴って人口が増えた",
+        "Mastered (✔)": false
+      },
+      {
+        "Grammar ID": "G006",
+        "Pattern": "～おかげで",
+        "Meaning": "thanks to",
+        "Example": "先生のおかげで合格できた",
+        "Mastered (✔)": false
+      },
+      {
+        "Grammar ID": "G007",
+        "Pattern": "～にもかかわらず",
+        "Meaning": "despite; in spite of",
+        "Example": "雨にもかかわらず出かけた",
+        "Mastered (✔)": false
+      },
+      {
+        "Grammar ID": "G008",
+        "Pattern": "～にしては",
+        "Meaning": "considering; for (one's level)",
+        "Example": "初めてにしては上手だ",
+        "Mastered (✔)": false
+      },
+      {
+        "Grammar ID": "G009",
+        "Pattern": "～ことはない",
+        "Meaning": "there is no need to",
+        "Example": "心配することはない",
+        "Mastered (✔)": false
+      },
+      {
+        "Grammar ID": "G010",
+        "Pattern": "～わけがない",
+        "Meaning": "cannot be; impossible",
+        "Example": "そんなことがあるわけがない",
+        "Mastered (✔)": false
+      },
+      {
+        "Grammar ID": "G011",
+        "Pattern": "～ものの",
+        "Meaning": "although",
+        "Example": "努力したものの結果が出なかった",
+        "Mastered (✔)": false
+      },
+      {
+        "Grammar ID": "G012",
+        "Pattern": "～に過ぎない",
+        "Meaning": "no more than",
+        "Example": "それは噂に過ぎない",
+        "Mastered (✔)": false
+      },
+      {
+        "Grammar ID": "G013",
+        "Pattern": "～に対して",
+        "Meaning": "toward; in contrast to",
+        "Example": "親切に対して感謝している",
+        "Mastered (✔)": false
+      },
+      {
+        "Grammar ID": "G014",
+        "Pattern": "～に限らず",
+        "Meaning": "not limited to",
+        "Example": "大人に限らず子どもにも人気だ",
+        "Mastered (✔)": false
+      },
+      {
+        "Grammar ID": "G015",
+        "Pattern": "～次第",
+        "Meaning": "depending on; as soon as",
+        "Example": "準備ができ次第、出発します",
+        "Mastered (✔)": false
+      }
+    ],
+    "Progress": [
+      {
+        "Week": "Week 1",
+        "Completion %": 0.0
+      },
+      {
+        "Week": "Week 2",
+        "Completion %": 0.0
+      },
+      {
+        "Week": "Week 3",
+        "Completion %": 0.0
+      },
+      {
+        "Week": "Week 4",
+        "Completion %": 0.0
+      },
+      {
+        "Week": "Week 5",
+        "Completion %": 0.0
+      },
+      {
+        "Week": "Week 6",
+        "Completion %": 0.0
+      },
+      {
+        "Week": "Week 7",
+        "Completion %": 0.0
+      },
+      {
+        "Week": "Week 8",
+        "Completion %": 0.0
+      },
+      {
+        "Week": "Week 9",
+        "Completion %": 0.0
+      },
+      {
+        "Week": "Week 10",
+        "Completion %": 0.0
+      },
+      {
+        "Week": "Week 11",
+        "Completion %": 0.0
+      },
+      {
+        "Week": "Week 12",
+        "Completion %": 0.0
+      },
+      {
+        "Week": "Week 13",
+        "Completion %": 0.0
+      }
+    ]
+  }
