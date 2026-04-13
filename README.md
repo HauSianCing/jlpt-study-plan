@@ -1,4 +1,4 @@
-# JLPT N2 Study Planner (React + Material UI)
+# JLPT N2 Study Planner (React + Material UI) builded by using Copilot AI
 
 ## Fixes included
 - ✅ DataGrid `valueFormatter` updated for MUI X v7 (it now receives the raw `value`, which can be `null`).
