@@ -26,7 +26,7 @@ const STORAGE_KEY = 'jlpt-n2-workbook-v1';
 
 function safeWorkbook(v: unknown): WorkbookData {
   const d = v as WorkbookData;
-  const def = defaultWorkbook as WorkbookData;
+  const def = defaultWorkbook as unknown as WorkbookData;
   return {
     StudyPlan: d?.StudyPlan ?? def.StudyPlan,
     Vocabulary: d?.Vocabulary ?? def.Vocabulary,
