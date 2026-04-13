@@ -56,19 +56,19 @@
   },
       {
         field: 'Review D+1',
-        headerName: 'D+1',
+        headerName: 'Rev D+1',
         flex: 0.6,
         valueFormatter: (value) => formatDateCell(value),
       },
       {
         field: 'Review D+7',
-        headerName: 'D+7',
+        headerName: 'Rev D+7',
         flex: 0.6,
         valueFormatter: (value) => formatDateCell(value),
       },
       {
         field: 'Review D+14',
-        headerName: 'D+14',
+        headerName: 'Rev D+14',
         flex: 0.7,
         valueFormatter: (value) => formatDateCell(value),
       },
