@@ -21,6 +21,8 @@ import StudyPlanTable from "./components/StudyPlanTable";
 import VocabTable from "./components/VocabTable";
 import GrammarTable from "./components/GrammarTable";
 import ProgressView from "./components/ProgressView";
+import WeeklyTestView from "./components/WeeklyTestView";
+import { useLocalStorageTTL } from "./hooks/useLocalStorageTTL";
 
 const STORAGE_KEY = "jlpt-n2-workbook-v1";
 
@@ -37,9 +39,11 @@ function safeWorkbook(v: unknown): WorkbookData {
 
 export default function App() {
   const [tab, setTab] = useState(0);
-  const [workbook, setWorkbook] = useLocalStorageState<WorkbookData>(
+
+  const [workbook, setWorkbook] = useLocalStorageTTL<WorkbookData>(
     STORAGE_KEY,
     safeWorkbook(defaultWorkbook),
+    24 * 60 * 60 * 1000, // 1 day
   );
 
   const title = useMemo(() => {
@@ -48,7 +52,7 @@ export default function App() {
         return "Study Plan";
       case 1:
         return "Vocabulary";
-      case 2:
+      case 2: 
         return "Grammar";
       case 3:
         return "Progress";
@@ -113,6 +117,7 @@ export default function App() {
                   <Tab label="Vocabulary" />
                   <Tab label="Grammar" />
                   <Tab label="Progress" />
+                  <Tab label="Weekly Test" />
                 </Tabs>
               </Stack>
             </Paper>
@@ -141,6 +146,7 @@ export default function App() {
                 />
               )}
               {tab === 3 && <ProgressView studyPlan={workbook.StudyPlan} />}
+              {tab === 4 && <WeeklyTestView workbook={workbook} />}
             </Paper>
 
             <Paper sx={{ p: 2 }}>

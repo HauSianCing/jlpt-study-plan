@@ -2,12 +2,15 @@ import { createTheme } from '@mui/material/styles';
 
 export const theme = createTheme({
   palette: {
+
     mode: 'light',
+
     primary: { main: '#4F46E5' },   // Indigo
     secondary: { main: '#EC4899' }, // Pink
     success: { main: '#22C55E' },   // Green
     warning: { main: '#F59E0B' },   // Amber
-    info: { main: '#0EA5E9' },      // Sky
+    info: { main: '#13b0f8' },      // Sky
+
     background: {
       default: '#F7F8FC',
       paper: '#FFFFFF',
