@@ -122,24 +122,40 @@ export default function VocabTable({ rows, onChange }: Props) {
         <DetailsDialog
           open={open}
           onClose={() => setOpen(false)}
+          accent="vocab"
           title={`Vocabulary: ${selected["Vocab ID"]}`}
           subtitle="Details for this vocabulary item"
           chips={[
-            selected["Learned (✔)"] ? "Learned" : "Not learned",
-            selected["Review D+1"]
-              ? `D+1: ${selected["Review D+1"]}`
-              : "D+1: —",
-            selected["Review D+7"]
-              ? `D+7: ${selected["Review D+7"]}`
-              : "D+7: —",
-            selected["Review D+14"]
-              ? `D+14: ${selected["Review D+14"]}`
-              : "D+14: —",
+            {
+              label: selected["Learned (✔)"] ? "Learned" : "Not learned",
+              color: selected["Learned (✔)"] ? "success" : "warning",
+            },
+            {
+              label: selected["Review D+1"]
+                ? `Rev D+1: ${selected["Review D+1"]}`
+                : "Rev D+1: —",
+              color: "info",
+              variant: "outlined",
+            },
+            {
+              label: selected["Review D+7"]
+                ? `Rev D+7: ${selected["Review D+7"]}`
+                : "Rev D+7: —",
+              color: "info",
+              variant: "outlined",
+            },
+            {
+              label: selected["Review D+14"]
+                ? `Rev D+14: ${selected["Review D+14"]}`
+                : "Rev D+14: —",
+              color: "info",
+              variant: "outlined",
+            },
           ]}
           items={[
-            { label: "Word", value: selected.Word },
+            { label: "Word", value: selected.Word, highlight: true },
             { label: "Pronunciation", value: selected.Pronunciation },
-            { label: "Meaning", value: selected.Meaning },
+            { label: "Meaning", value: selected.Meaning, highlight: true },
             { label: "Example", value: selected.Example },
           ]}
         />

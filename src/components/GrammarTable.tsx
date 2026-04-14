@@ -79,12 +79,19 @@ export default function GrammarTable({ rows, onChange }: Props) {
         <DetailsDialog
           open={open}
           onClose={() => setOpen(false)}
+          accent="grammar"
           title={`Grammar: ${selected["Grammar ID"]}`}
           subtitle="Details for this grammar pattern"
-          chips={[selected["Mastered (✔)"] ? "Mastered" : "Not mastered"]}
+          chips={[
+            {
+              label: selected["Mastered (✔)"] ? "Mastered" : "Not mastered",
+              color: selected["Mastered (✔)"] ? "success" : "warning",
+            },
+            { label: "JLPT N2", color: "info", variant: "outlined" },
+          ]}
           items={[
-            { label: "Pattern", value: selected.Pattern },
-            { label: "Meaning", value: selected.Meaning },
+            { label: "Pattern", value: selected.Pattern, highlight: true },
+            { label: "Meaning", value: selected.Meaning, highlight: true },
             { label: "Example", value: selected.Example },
           ]}
         />
