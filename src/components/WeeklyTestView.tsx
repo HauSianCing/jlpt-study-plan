@@ -11,13 +11,9 @@ import {
 } from "@mui/material";
 import dayjs from "dayjs";
 
-import type {
-  WorkbookData,
-  VocabRow,
-  GrammarRow,
-  StudyPlanRow,
-} from "../types";
+import type { WorkbookData, StudyPlanRow } from "../types";
 import { parseIdList } from "../utils/parseIds";
+import { chipSx } from "../utils/chipSx";
 
 type Props = {
   workbook: WorkbookData;
@@ -49,6 +45,12 @@ type TestResult = {
 
 const HISTORY_KEY = "jlpt-weekly-test-history-v1";
 
+/**
+ * ✅ Unlock rule:
+ * - set to 1 if you want the test available as soon as any task is done
+ */
+const REQUIRED_DONE_TASKS = 7;
+
 function shuffle<T>(arr: T[]) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -62,30 +64,42 @@ function unique<T>(arr: T[]) {
   return Array.from(new Set(arr));
 }
 
-function getDueVocab(todayISO: string, vocab: VocabRow[]) {
-  return vocab.filter((v) => v["Learned (✔)"] && v["Review D+7"] === todayISO);
+/**
+ * ✅ DoneAt-based filter:
+ * Returns rows completed within last N days based on DoneAt timestamp (actual completion time).
+ */
+function getDoneRowsLastNDays(studyPlan: StudyPlanRow[], days: number) {
+  const now = dayjs();
+  const start = now.subtract(days, "day");
+
+  return studyPlan.filter((r) => {
+    if (r["Completed (✔)"] !== true) return false;
+
+    const doneAt = (r as any).DoneAt as string | null | undefined;
+    if (!doneAt) return false;
+
+    const d = dayjs(doneAt);
+    return d.isValid() && d.isAfter(start);
+  });
 }
 
-function getLast7DaysGrammarIds(todayISO: string, studyPlan: StudyPlanRow[]) {
-  const start = dayjs(todayISO).subtract(6, "day"); // include today => 7 days
-  const startInclusive = start.subtract(1, "day");
-  const endExclusive = dayjs(todayISO).add(1, "day");
+/** Collect vocab/grammar IDs from StudyPlan rows (supports ranges via parseIdList). */
+function collectIdsFromStudyPlan(rows: StudyPlanRow[]) {
+  const vocab: string[] = [];
+  const grammar: string[] = [];
 
-  const ids: string[] = [];
-
-  for (const r of studyPlan) {
-    if (!r.Date) continue;
-    const d = dayjs(r.Date);
-    if (!d.isValid()) continue;
-
-    if (d.isAfter(startInclusive) && d.isBefore(endExclusive)) {
-      ids.push(...parseIdList(String(r["Grammar IDs"] || ""), "G"));
-    }
+  for (const r of rows) {
+    vocab.push(...parseIdList(String(r["Vocab IDs"] || ""), "V"));
+    grammar.push(...parseIdList(String(r["Grammar IDs"] || ""), "G"));
   }
 
-  return unique(ids);
+  return {
+    vocabIds: unique(vocab),
+    grammarIds: unique(grammar),
+  };
 }
 
+/** Build multiple-choice options. */
 function makeChoices(answer: string, pool: string[], count = 4) {
   const distractors = shuffle(pool.filter((x) => x && x !== answer)).slice(
     0,
@@ -95,23 +109,46 @@ function makeChoices(answer: string, pool: string[], count = 4) {
 }
 
 export default function WeeklyTestView({ workbook }: Props) {
+  const allTotal = workbook.StudyPlan.length;
+  const allDone = workbook.StudyPlan.filter(
+    (r) => r["Completed (✔)"] === true,
+  ).length;
   const todayISO = dayjs().format("YYYY-MM-DD");
 
-  const dueVocab = useMemo(
-    () => getDueVocab(todayISO, workbook.Vocabulary),
-    [todayISO, workbook.Vocabulary],
+  // ✅ Done rows in last 7 days based on DoneAt
+  const doneRows = useMemo(
+    () => getDoneRowsLastNDays(workbook.StudyPlan, 7),
+    [workbook.StudyPlan],
   );
 
-  const dueGrammarIds = useMemo(
-    () => getLast7DaysGrammarIds(todayISO, workbook.StudyPlan),
-    [todayISO, workbook.StudyPlan],
+  const doneCount = doneRows.length;
+  const unlocked = doneCount >= REQUIRED_DONE_TASKS;
+
+  // Helpful warning: completed rows missing DoneAt won't count
+  const completedButMissingDoneAt = useMemo(() => {
+    return workbook.StudyPlan.filter(
+      (r) => r["Completed (✔)"] === true && !(r as any).DoneAt,
+    ).length;
+  }, [workbook.StudyPlan]);
+
+  // ✅ Extract IDs from done rows
+  const { vocabIds, grammarIds } = useMemo(
+    () => collectIdsFromStudyPlan(doneRows),
+    [doneRows],
   );
 
-  const dueGrammar = useMemo(() => {
-    const set = new Set(dueGrammarIds);
+  // ✅ Get actual vocab/grammar items to test
+  const testVocab = useMemo(() => {
+    const set = new Set(vocabIds);
+    return workbook.Vocabulary.filter((v) => set.has(v["Vocab ID"]));
+  }, [workbook.Vocabulary, vocabIds]);
+
+  const testGrammar = useMemo(() => {
+    const set = new Set(grammarIds);
     return workbook.Grammar.filter((g) => set.has(g["Grammar ID"]));
-  }, [workbook.Grammar, dueGrammarIds]);
+  }, [workbook.Grammar, grammarIds]);
 
+  // ✅ Build questions
   const questions: Question[] = useMemo(() => {
     const vocabMeaningPool = workbook.Vocabulary.map((v) => v.Meaning).filter(
       Boolean,
@@ -122,7 +159,7 @@ export default function WeeklyTestView({ workbook }: Props) {
 
     const q: Question[] = [];
 
-    for (const v of dueVocab) {
+    for (const v of testVocab) {
       if (!v.Meaning) continue;
       q.push({
         kind: "vocab",
@@ -133,7 +170,7 @@ export default function WeeklyTestView({ workbook }: Props) {
       });
     }
 
-    for (const g of dueGrammar) {
+    for (const g of testGrammar) {
       if (!g.Meaning) continue;
       q.push({
         kind: "grammar",
@@ -145,8 +182,9 @@ export default function WeeklyTestView({ workbook }: Props) {
     }
 
     return shuffle(q);
-  }, [dueVocab, dueGrammar, workbook.Vocabulary, workbook.Grammar]);
+  }, [testVocab, testGrammar, workbook.Vocabulary, workbook.Grammar]);
 
+  // ✅ UI state
   const [started, setStarted] = useState(false);
   const [idx, setIdx] = useState(0);
   const [selected, setSelected] = useState<string>("");
@@ -156,15 +194,7 @@ export default function WeeklyTestView({ workbook }: Props) {
   const current = questions[idx];
   const total = questions.length;
 
-  const vocabIds = useMemo(
-    () => dueVocab.map((v) => v["Vocab ID"]),
-    [dueVocab],
-  );
-  const grammarIds = useMemo(
-    () => dueGrammar.map((g) => g["Grammar ID"]),
-    [dueGrammar],
-  );
-
+  // ✅ History
   const history: TestResult[] = useMemo(() => {
     try {
       return JSON.parse(
@@ -188,9 +218,15 @@ export default function WeeklyTestView({ workbook }: Props) {
     setSelected("");
   };
 
+  // Colors (match your app)
+  const vocabColor = "#f3841c";
+  const gramColor = "#57bff0";
+  const mainColor = "#4F46E5";
+
   return (
     <Stack spacing={2}>
       <Paper sx={{ p: 2.5, borderRadius: 3 }}>
+        {/* Header */}
         <Stack
           direction="row"
           justifyContent="space-between"
@@ -202,8 +238,18 @@ export default function WeeklyTestView({ workbook }: Props) {
               Weekly Test
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Items become testable when their D+7 review date is today.
+              This test is based on tasks you actually completed in the last 7
+              days.
             </Typography>
+            {completedButMissingDoneAt > 0 && (
+              <Typography
+                variant="caption"
+                sx={{ fontWeight: 800, color: "warning.main" }}
+              >
+                ⚠️ {completedButMissingDoneAt} completed rows have no DoneAt and
+                won’t be counted. (Set DoneAt when checking Done.)
+              </Typography>
+            )}
           </Stack>
 
           <Stack
@@ -213,40 +259,50 @@ export default function WeeklyTestView({ workbook }: Props) {
             justifyContent="flex-end"
           >
             <Chip
-              label={`Vocabulary due: ${dueVocab.length}`}
-              sx={(t) => ({
-                bgcolor: "#690000",
-                color: "#ffffff",
-                fontWeight: 800,
-              })}
+              label={`StudyPlan done: ${allDone}/${allTotal}`}
+              sx={chipSx(mainColor)}
             />
             <Chip
-              label={`Grammar due: ${dueGrammar.length}`}
-              sx={(t) => ({
-                bgcolor: "#005e5e",
-                color: "#ffffff",
-                fontWeight: 800,
-              })}
+              label={`Vocab in test: ${testVocab.length}`}
+              sx={chipSx(vocabColor)}
+            />
+            <Chip
+              label={`Grammar in test: ${testGrammar.length}`}
+              sx={chipSx(gramColor)}
             />
           </Stack>
         </Stack>
 
         <Divider sx={{ my: 2 }} />
 
+        {/* Not started */}
         {!started && !finished && (
           <Stack spacing={1.5}>
             {total === 0 ? (
               <Typography color="text.secondary">
-                No items due for the weekly test today. ✅
+                No questions yet. Mark some StudyPlan tasks Done so they count
+                in the last 7 days. ✅
               </Typography>
             ) : (
               <>
                 <Typography>
-                  You have <b>{total}</b> questions ready today.
+                  You have <b>{total}</b> questions ready.
                 </Typography>
-                <Button variant="contained" onClick={() => setStarted(true)}>
+
+                <Button
+                  variant="contained"
+                  disabled={!unlocked}
+                  onClick={() => setStarted(true)}
+                >
                   Start Test
                 </Button>
+
+                {!unlocked && (
+                  <Typography variant="body2" color="text.secondary">
+                    Complete at least <b>{REQUIRED_DONE_TASKS}</b> tasks within
+                    the last 7 days to unlock the test.
+                  </Typography>
+                )}
               </>
             )}
 
@@ -275,6 +331,7 @@ export default function WeeklyTestView({ workbook }: Props) {
           </Stack>
         )}
 
+        {/* Quiz */}
         {started && !finished && current && (
           <Stack spacing={2}>
             <Stack spacing={0.5}>
@@ -293,7 +350,11 @@ export default function WeeklyTestView({ workbook }: Props) {
                       ? `Vocab ${current.id}`
                       : `Grammar ${current.id}`
                   }
-                  color={current.kind === "vocab" ? "primary" : "info"}
+                  sx={
+                    current.kind === "vocab"
+                      ? chipSx(vocabColor)
+                      : chipSx(gramColor)
+                  }
                 />
               </Stack>
 
@@ -308,8 +369,8 @@ export default function WeeklyTestView({ workbook }: Props) {
                     borderRadius: 999,
                     background:
                       current.kind === "vocab"
-                        ? "linear-gradient(90deg, #4F46E5, #EC4899)"
-                        : "linear-gradient(90deg, #0EA5E9, #4F46E5)",
+                        ? `linear-gradient(90deg, ${vocabColor}, #EC4899)`
+                        : `linear-gradient(90deg, ${gramColor}, #13b0f8)`,
                   },
                 }}
               />
@@ -359,8 +420,7 @@ export default function WeeklyTestView({ workbook }: Props) {
                   const correct = selected === current.answer;
                   const newScore = correct ? score + 1 : score;
 
-                  if (correct) setScore(newScore);
-
+                  setScore(newScore);
                   setSelected("");
 
                   if (idx + 1 >= total) {
@@ -383,6 +443,7 @@ export default function WeeklyTestView({ workbook }: Props) {
           </Stack>
         )}
 
+        {/* Finished */}
         {finished && (
           <Stack spacing={1.5}>
             <Typography variant="h5" sx={{ fontWeight: 900 }}>
@@ -395,11 +456,11 @@ export default function WeeklyTestView({ workbook }: Props) {
             <Stack direction="row" spacing={1} flexWrap="wrap">
               <Chip
                 label={`Vocab tested: ${vocabIds.length}`}
-                color="primary"
+                sx={chipSx(vocabColor)}
               />
               <Chip
                 label={`Grammar tested: ${grammarIds.length}`}
-                color="info"
+                sx={chipSx(gramColor)}
               />
               <Chip
                 label={

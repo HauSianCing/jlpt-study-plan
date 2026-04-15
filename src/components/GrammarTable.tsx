@@ -3,6 +3,7 @@ import type { GrammarRow } from "../types";
 import { Box, Checkbox, Link } from "@mui/material";
 import { useMemo, useState } from "react";
 import DetailsDialog from "./DetailsDialog";
+import dayjs from "dayjs";
 
 type Props = {
   rows: GrammarRow[];
@@ -52,12 +53,52 @@ export default function GrammarTable({ rows, onChange }: Props) {
           checked={Boolean(params.value)}
           onChange={(e) => {
             const idx = params.row.__index as number;
+
+            const mastered = e.target.checked;
+            const base = dayjs(); // today
+
             const next = [...rows];
-            next[idx] = { ...next[idx], "Mastered (✔)": e.target.checked };
+
+            next[idx] = {
+              ...next[idx],
+              "Mastered (✔)": mastered,
+              "Review D+1": mastered
+                ? base.add(1, "day").format("YYYY-MM-DD")
+                : null,
+              "Review D+7": mastered
+                ? base.add(7, "day").format("YYYY-MM-DD")
+                : null,
+              "Review D+14": mastered
+                ? base.add(14, "day").format("YYYY-MM-DD")
+                : null,
+            };
+
             onChange(next);
           }}
         />
       ),
+    },
+
+    {
+      field: "Review D+1",
+      headerName: "D+1",
+      flex: 0.6,
+      valueFormatter: (value) =>
+        value ? dayjs(String(value)).format("YYYY-MM-DD") : "",
+    },
+    {
+      field: "Review D+7",
+      headerName: "D+7",
+      flex: 0.6,
+      valueFormatter: (value) =>
+        value ? dayjs(String(value)).format("YYYY-MM-DD") : "",
+    },
+    {
+      field: "Review D+14",
+      headerName: "D+14",
+      flex: 0.7,
+      valueFormatter: (value) =>
+        value ? dayjs(String(value)).format("YYYY-MM-DD") : "",
     },
   ];
 

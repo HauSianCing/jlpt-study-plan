@@ -50,13 +50,20 @@ export async function parseWorkbook(file: File): Promise<WorkbookData> {
     'Review D+14': normalizeDate(r['Review D+14']),
   }));
 
-  const Grammar: GrammarRow[] = grammarRaw.map((r) => ({
-    'Grammar ID': r['Grammar ID'] ?? '',
-    Pattern: r['Pattern'] ?? '',
-    Meaning: r['Meaning'] ?? '',
-    Example: r['Example'] ?? '',
-    'Mastered (✔)': normalizeCheck(r['Mastered (✔)']),
-  }));
+  
+const Grammar: GrammarRow[] = grammarRaw.map((r) => ({
+  'Grammar ID': r['Grammar ID'] ?? '',
+  Pattern: r['Pattern'] ?? '',
+  Meaning: r['Meaning'] ?? '',
+  Example: r['Example'] ?? '',
+  'Mastered (✔)': normalizeCheck(r['Mastered (✔)']),
+
+  // ✅ parse if columns exist, otherwise null
+  'Review D+1': normalizeDate(r['Review D+1']),
+  'Review D+7': normalizeDate(r['Review D+7']),
+  'Review D+14': normalizeDate(r['Review D+14']),
+}));
+
 
   const Progress: ProgressRow[] = progressRaw.map((r) => ({
     Week: String(r['Week'] ?? ''),

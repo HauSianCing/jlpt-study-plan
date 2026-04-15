@@ -203,6 +203,7 @@ export default function StudyPlanTable({ rows, onChange }: Props) {
               ...next[idx],
               "Completed (✔)": done,
               "Completion %": done ? 100 : 0,
+              DoneAt: done ? dayjs().toISOString() : null, 
             };
 
             // ✅ When checked: auto-fill Date for this row and all following rows

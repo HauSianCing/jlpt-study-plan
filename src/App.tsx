@@ -1,30 +1,37 @@
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { useEffect, useMemo, useState } from "react";
 import {
   AppBar,
   Box,
+  Button,
   Container,
+  CssBaseline,
   Paper,
   Stack,
   Tab,
   Tabs,
+  ThemeProvider,
   Toolbar,
   Typography,
 } from "@mui/material";
-import { useMemo, useState } from "react";
+import dayjs from "dayjs";
+
 import { theme } from "./theme";
 import type { WorkbookData } from "./types";
 import defaultWorkbook from "./data/defaultWorkbook.json";
 import { parseWorkbook } from "./utils/parseWorkbook";
-import { useLocalStorageState } from "./hooks/useLocalStorage";
-import FileLoader from "./components/FileLoader";
-import StudyPlanTable from "./components/StudyPlanTable";
-import VocabTable from "./components/VocabTable";
-import GrammarTable from "./components/GrammarTable";
-import ProgressView from "./components/ProgressView";
-import WeeklyTestView from "./components/WeeklyTestView";
+import { getGrammarDue, getVocabDue } from "./utils/reminders";
 import { useLocalStorageTTL } from "./hooks/useLocalStorageTTL";
 
+import FileLoader from "./components/FileLoader";
+import GrammarTable from "./components/GrammarTable";
+import ProgressView from "./components/ProgressView";
+import ReviewReminders from "./components/ReviewReminders";
+import StudyPlanTable from "./components/StudyPlanTable";
+import VocabTable from "./components/VocabTable";
+import WeeklyTestView from "./components/WeeklyTestView";
+
 const STORAGE_KEY = "jlpt-n2-workbook-v1";
+const NOTIFY_KEY = "jlpt-review-notified-date"; // prevent repeating same day
 
 function safeWorkbook(v: unknown): WorkbookData {
   const d = v as WorkbookData;
@@ -38,23 +45,27 @@ function safeWorkbook(v: unknown): WorkbookData {
 }
 
 export default function App() {
+  // Tab order:
+  // 0 Study Plan, 1 Vocabulary, 2 Grammar, 3 Weekly Test, 4 Progress
   const [tab, setTab] = useState(0);
 
   const [workbook, setWorkbook] = useLocalStorageTTL<WorkbookData>(
     STORAGE_KEY,
     safeWorkbook(defaultWorkbook),
-    24 * 60 * 60 * 1000, // 1 day
+    3 * 24 * 60 * 60 * 1000, // 3 days TTL
   );
 
-  const title = useMemo(() => {
+  const pageTitle = useMemo(() => {
     switch (tab) {
       case 0:
         return "Study Plan";
       case 1:
         return "Vocabulary";
-      case 2: 
+      case 2:
         return "Grammar";
       case 3:
+        return "Weekly Test";
+      case 4:
         return "Progress";
       default:
         return "JLPT N2 Planner";
@@ -95,9 +106,11 @@ export default function App() {
       >
         <Container sx={{ py: 3 }} maxWidth="lg">
           <Stack spacing={2}>
+            <ReviewReminders workbook={workbook} />
+
             <Paper sx={{ p: 2 }}>
               <Stack spacing={1.5}>
-                <Typography variant="h5">{title}</Typography>
+                <Typography variant="h5">{pageTitle}</Typography>
 
                 <FileLoader
                   onFile={async (file) => {
@@ -111,13 +124,27 @@ export default function App() {
                   onChange={(_, v) => setTab(v)}
                   variant="scrollable"
                   scrollButtons="auto"
-                  sx={{ mt: 1 }}
+                  sx={{
+                    mt: 1,
+                    "& .MuiTab-root": {
+                      fontSize: "1rem",
+                      fontWeight: 800,
+                      minHeight: 42,
+                      py: 1,
+                      px: 1.5,
+                      textTransform: "none",
+                    },
+                    "& .MuiTabs-indicator": {
+                      height: 4,
+                      borderRadius: 999,
+                    },
+                  }}
                 >
                   <Tab label="Study Plan" />
                   <Tab label="Vocabulary" />
                   <Tab label="Grammar" />
-                  <Tab label="Progress" />
                   <Tab label="Weekly Test" />
+                  <Tab label="Progress" />
                 </Tabs>
               </Stack>
             </Paper>
@@ -126,35 +153,33 @@ export default function App() {
               {tab === 0 && (
                 <StudyPlanTable
                   rows={workbook.StudyPlan}
-                  onChange={(StudyPlan) =>
-                    setWorkbook({ ...workbook, StudyPlan })
-                  }
+                  onChange={(StudyPlan) => setWorkbook({ ...workbook, StudyPlan })}
                 />
               )}
+
               {tab === 1 && (
                 <VocabTable
                   rows={workbook.Vocabulary}
-                  onChange={(Vocabulary) =>
-                    setWorkbook({ ...workbook, Vocabulary })
-                  }
+                  onChange={(Vocabulary) => setWorkbook({ ...workbook, Vocabulary })}
                 />
               )}
+
               {tab === 2 && (
                 <GrammarTable
                   rows={workbook.Grammar}
                   onChange={(Grammar) => setWorkbook({ ...workbook, Grammar })}
                 />
               )}
-              {tab === 3 && <ProgressView studyPlan={workbook.StudyPlan} />}
-              {tab === 4 && <WeeklyTestView workbook={workbook} />}
+
+              {tab === 3 && <WeeklyTestView workbook={workbook} />}
+
+              {tab === 4 && <ProgressView studyPlan={workbook.StudyPlan} />}
             </Paper>
 
             <Paper sx={{ p: 2 }}>
               <Typography variant="subtitle1">Tips</Typography>
-              <Typography variant="body2" color="text.secondary">
-                • Mark items as completed/learned/mastered and your progress
-                will update. • Data is stored in your browser (localStorage). •
-                Use “Download Template” to get the original Excel file.
+              <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+                • Mark items as completed/learned/mastered and your progress will update. • Data is stored in your browser (localStorage). • Use “Download Template” to get the original Excel file.
               </Typography>
             </Paper>
           </Stack>
