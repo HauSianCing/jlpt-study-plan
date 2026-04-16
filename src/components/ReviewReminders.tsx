@@ -50,7 +50,7 @@ export default function ReviewReminders({ workbook }: Props) {
 
         <Box>
           <Typography variant="caption" color="text.secondary">
-            Tip: Open Vocabulary/Grammar tabs to review items and take Weekly test.
+            Tip: Open Vocabulary/Grammar tabs to review items.
           </Typography>
         </Box>
       </Stack>

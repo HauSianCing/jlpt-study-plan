@@ -57,8 +57,6 @@ const Grammar: GrammarRow[] = grammarRaw.map((r) => ({
   Meaning: r['Meaning'] ?? '',
   Example: r['Example'] ?? '',
   'Mastered (✔)': normalizeCheck(r['Mastered (✔)']),
-
-  // ✅ parse if columns exist, otherwise null
   'Review D+1': normalizeDate(r['Review D+1']),
   'Review D+7': normalizeDate(r['Review D+7']),
   'Review D+14': normalizeDate(r['Review D+14']),

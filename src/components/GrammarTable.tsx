@@ -81,21 +81,21 @@ export default function GrammarTable({ rows, onChange }: Props) {
 
     {
       field: "Review D+1",
-      headerName: "D+1",
+      headerName: "Rev D+1",
       flex: 0.6,
       valueFormatter: (value) =>
         value ? dayjs(String(value)).format("YYYY-MM-DD") : "",
     },
     {
       field: "Review D+7",
-      headerName: "D+7",
+      headerName: "Rev D+7",
       flex: 0.6,
       valueFormatter: (value) =>
         value ? dayjs(String(value)).format("YYYY-MM-DD") : "",
     },
     {
       field: "Review D+14",
-      headerName: "D+14",
+      headerName: "Rev D+14",
       flex: 0.7,
       valueFormatter: (value) =>
         value ? dayjs(String(value)).format("YYYY-MM-DD") : "",
@@ -128,7 +128,27 @@ export default function GrammarTable({ rows, onChange }: Props) {
               label: selected["Mastered (✔)"] ? "Mastered" : "Not mastered",
               color: selected["Mastered (✔)"] ? "success" : "warning",
             },
-            { label: "JLPT N2", color: "info", variant: "outlined" },
+            {
+              label: selected["Review D+1"]
+                ? `Rev D+1: ${selected["Review D+1"]}`
+                : "Rev D+1: —",
+              color: "info",
+              variant: "outlined",
+            },
+            {
+              label: selected["Review D+7"]
+                ? `Rev D+7: ${selected["Review D+7"]}`
+                : "Rev D+7: —",
+              color: "info",
+              variant: "outlined",
+            },
+            {
+              label: selected["Review D+14"]
+                ? `Rev D+14: ${selected["Review D+14"]}`
+                : "Rev D+14: —",
+              color: "info",
+              variant: "outlined",
+            },
           ]}
           items={[
             { label: "Pattern", value: selected.Pattern, highlight: true },

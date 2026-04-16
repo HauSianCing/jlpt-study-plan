@@ -7,9 +7,14 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 
 import type { StudyPlanRow } from "../types";
 
+type ChangeMeta = {
+  toggledDoneIndex?: number;
+  done?: boolean;
+};
+
 type Props = {
   rows: StudyPlanRow[];
-  onChange: (next: StudyPlanRow[]) => void;
+  onChange: (next: StudyPlanRow[], meta?: ChangeMeta) => void;
 };
 
 export default function StudyPlanTable({ rows, onChange }: Props) {
@@ -19,18 +24,19 @@ export default function StudyPlanTable({ rows, onChange }: Props) {
     startDateISO: string,
   ) {
     const base = dayjs(startDateISO);
-
     const next = [...currentRows];
+
     for (let i = startIndex; i < next.length; i++) {
       const d = base.add(i - startIndex, "day");
       next[i] = {
         ...next[i],
         Date: d.format("YYYY-MM-DD"),
-        Day: d.format("dddd"), // keeps Day consistent with Date
+        Day: d.format("dddd"),
       };
     }
     return next;
   }
+
   const columns: GridColDef[] = [
     {
       field: "Date",
@@ -44,7 +50,6 @@ export default function StudyPlanTable({ rows, onChange }: Props) {
       headerName: "Day",
       flex: 0.7,
       renderCell: (params) => {
-        // Use Day value if present, otherwise derive from Date
         const fromCell = String(params.value || "").trim();
         const fromDate =
           params.row?.Date && dayjs(String(params.row.Date)).isValid()
@@ -52,49 +57,19 @@ export default function StudyPlanTable({ rows, onChange }: Props) {
             : "";
 
         const day = fromCell || fromDate || "—";
-
         const isWeekend = day === "Saturday" || day === "Sunday";
 
-        // Pick colors (you can adjust)
         const stylesByDay: Record<
           string,
           { bg: string; fg: string; border: string }
         > = {
-          Monday: {
-            bg: "rgba(79,70,229,0.10)",
-            fg: "#3730A3",
-            border: "rgba(79,70,229,0.25)",
-          },
-          Tuesday: {
-            bg: "rgba(14,165,233,0.10)",
-            fg: "#075985",
-            border: "rgba(14,165,233,0.25)",
-          },
-          Wednesday: {
-            bg: "rgba(34,197,94,0.10)",
-            fg: "#166534",
-            border: "rgba(34,197,94,0.25)",
-          },
-          Thursday: {
-            bg: "rgba(245,158,11,0.12)",
-            fg: "#92400E",
-            border: "rgba(245,158,11,0.30)",
-          },
-          Friday: {
-            bg: "rgba(236,72,153,0.10)",
-            fg: "#9D174D",
-            border: "rgba(236,72,153,0.25)",
-          },
-          Saturday: {
-            bg: "rgba(99,102,241,0.10)",
-            fg: "#3730A3",
-            border: "rgba(99,102,241,0.25)",
-          },
-          Sunday: {
-            bg: "rgba(239,68,68,0.10)",
-            fg: "#991B1B",
-            border: "rgba(239,68,68,0.25)",
-          },
+          Monday: { bg: "rgba(79,70,229,0.10)", fg: "#3730A3", border: "rgba(79,70,229,0.25)" },
+          Tuesday: { bg: "rgba(14,165,233,0.10)", fg: "#075985", border: "rgba(14,165,233,0.25)" },
+          Wednesday: { bg: "rgba(34,197,94,0.10)", fg: "#166534", border: "rgba(34,197,94,0.25)" },
+          Thursday: { bg: "rgba(245,158,11,0.12)", fg: "#92400E", border: "rgba(245,158,11,0.30)" },
+          Friday: { bg: "rgba(236,72,153,0.10)", fg: "#9D174D", border: "rgba(236,72,153,0.25)" },
+          Saturday: { bg: "rgba(99,102,241,0.10)", fg: "#7f1e95", border: "rgba(175, 50, 216, 0.25)" },
+          Sunday: { bg: "rgba(239,68,68,0.10)", fg: "#991B1B", border: "rgba(239,68,68,0.25)" },
         };
 
         const styles = stylesByDay[day] ?? {
@@ -129,11 +104,7 @@ export default function StudyPlanTable({ rows, onChange }: Props) {
         const isVocab = v.includes("Vocab");
         const isGrammar = v.includes("Grammar");
 
-        const icon = isBoth ? (
-          <MenuBookIcon fontSize="small" />
-        ) : (
-          <AbcIcon fontSize="small" />
-        );
+        const icon = isBoth ? <MenuBookIcon fontSize="small" /> : <AbcIcon fontSize="small" />;
 
         const bg = isBoth
           ? "linear-gradient(90deg, rgba(79,70,229,.18), rgba(236,72,153,.18))"
@@ -178,7 +149,7 @@ export default function StudyPlanTable({ rows, onChange }: Props) {
               ...next[idx],
               "Study Time (min)": Number.isFinite(val) ? val : 0,
             };
-            onChange(next);
+            onChange(next); // meta not needed
           }}
           inputProps={{ min: 0, style: { width: 90 } }}
         />
@@ -198,20 +169,16 @@ export default function StudyPlanTable({ rows, onChange }: Props) {
 
             let next = [...rows];
 
-            // Update done state + completion %
             next[idx] = {
               ...next[idx],
               "Completed (✔)": done,
               "Completion %": done ? 100 : 0,
-              DoneAt: done ? dayjs().toISOString() : null, 
+              DoneAt: done ? dayjs().toISOString() : null,
             };
 
-            // ✅ When checked: auto-fill Date for this row and all following rows
+            // Auto-fill Date for this row + following rows
             if (done) {
               const existingDate = String(next[idx].Date || "").trim();
-
-              // If current row already has a Date, use it as the anchor.
-              // Otherwise use today.
               const anchor =
                 existingDate && dayjs(existingDate).isValid()
                   ? existingDate
@@ -220,7 +187,8 @@ export default function StudyPlanTable({ rows, onChange }: Props) {
               next = applySequentialDates(next, idx, anchor);
             }
 
-            onChange(next);
+            // THIS is the key change: send meta to App.tsx
+            onChange(next, { toggledDoneIndex: idx, done });
           }}
         />
       ),
@@ -245,7 +213,7 @@ export default function StudyPlanTable({ rows, onChange }: Props) {
             const idx = params.row.__index as number;
             const next = [...rows];
             next[idx] = { ...next[idx], Notes: e.target.value };
-            onChange(next);
+            onChange(next); // meta not needed
           }}
           placeholder="Add notes"
           fullWidth
@@ -263,16 +231,10 @@ export default function StudyPlanTable({ rows, onChange }: Props) {
         columns={columns}
         autoHeight
         disableRowSelectionOnClick
-        getRowClassName={(params) =>
-          params.row["Completed (✔)"] ? "row-done" : ""
-        }
+        getRowClassName={(params) => (params.row["Completed (✔)"] ? "row-done" : "")}
         sx={{
-          "& .row-done": {
-            backgroundColor: "rgba(34,197,94,0.10)",
-          },
-          "& .row-done:hover": {
-            backgroundColor: "rgba(34,197,94,0.16)",
-          },
+          "& .row-done": { backgroundColor: "rgba(34,197,94,0.10)" },
+          "& .row-done:hover": { backgroundColor: "rgba(34,197,94,0.16)" },
         }}
       />
     </Box>

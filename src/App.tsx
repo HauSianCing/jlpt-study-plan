@@ -1,8 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import {
   AppBar,
   Box,
-  Button,
   Container,
   CssBaseline,
   Paper,
@@ -16,10 +15,10 @@ import {
 import dayjs from "dayjs";
 
 import { theme } from "./theme";
-import type { WorkbookData } from "./types";
+import type { StudyPlanRow, WorkbookData } from "./types";
 import defaultWorkbook from "./data/defaultWorkbook.json";
 import { parseWorkbook } from "./utils/parseWorkbook";
-import { getGrammarDue, getVocabDue } from "./utils/reminders";
+import { parseIdList } from "./utils/parseIds";
 import { useLocalStorageTTL } from "./hooks/useLocalStorageTTL";
 
 import FileLoader from "./components/FileLoader";
@@ -31,7 +30,6 @@ import VocabTable from "./components/VocabTable";
 import WeeklyTestView from "./components/WeeklyTestView";
 
 const STORAGE_KEY = "jlpt-n2-workbook-v1";
-const NOTIFY_KEY = "jlpt-review-notified-date"; // prevent repeating same day
 
 function safeWorkbook(v: unknown): WorkbookData {
   const d = v as WorkbookData;
@@ -44,9 +42,53 @@ function safeWorkbook(v: unknown): WorkbookData {
   };
 }
 
+/** Cross-update: Done StudyPlan row -> Learned vocab + Mastered grammar */
+function applyStudyDoneToVocabGrammar(
+  wb: WorkbookData,
+  studyRow: any,
+): WorkbookData {
+  const vocabIds = parseIdList(String(studyRow["Vocab IDs"] || ""), "V");
+  const grammarIds = parseIdList(String(studyRow["Grammar IDs"] || ""), "G");
+
+  const base =
+    studyRow.Date && dayjs(studyRow.Date).isValid()
+      ? dayjs(studyRow.Date)
+      : dayjs();
+
+  const Vocabulary = wb.Vocabulary.map((v) => {
+    if (!vocabIds.includes(v["Vocab ID"])) return v;
+
+    const next = { ...v, "Learned (✔)": true };
+
+    // set review dates if missing
+    if (!next["Review D+1"])
+      next["Review D+1"] = base.add(1, "day").format("YYYY-MM-DD");
+    if (!next["Review D+7"])
+      next["Review D+7"] = base.add(7, "day").format("YYYY-MM-DD");
+    if (!next["Review D+14"])
+      next["Review D+14"] = base.add(14, "day").format("YYYY-MM-DD");
+
+    return next;
+  });
+
+  const Grammar = wb.Grammar.map((g) => {
+    if (!grammarIds.includes(g["Grammar ID"])) return g;
+    const next = { ...g, "Mastered (✔)": true };
+    if (!next["Review D+1"])
+      next["Review D+1"] = base.add(1, "day").format("YYYY-MM-DD");
+    if (!next["Review D+7"])
+      next["Review D+7"] = base.add(7, "day").format("YYYY-MM-DD");
+    if (!next["Review D+14"])
+      next["Review D+14"] = base.add(14, "day").format("YYYY-MM-DD");
+
+    return next;
+  });
+
+  return { ...wb, Vocabulary, Grammar };
+}
+
 export default function App() {
-  // Tab order:
-  // 0 Study Plan, 1 Vocabulary, 2 Grammar, 3 Weekly Test, 4 Progress
+  // Tab order: 0 Study Plan, 1 Vocabulary, 2 Grammar, 3 Weekly Test, 4 Progress
   const [tab, setTab] = useState(0);
 
   const [workbook, setWorkbook] = useLocalStorageTTL<WorkbookData>(
@@ -71,6 +113,23 @@ export default function App() {
         return "JLPT N2 Planner";
     }
   }, [tab]);
+
+  function collectCoveredIdsFromDoneStudyPlan(StudyPlan: any[]) {
+    const vocabSet = new Set<string>();
+    const grammarSet = new Set<string>();
+
+    for (const r of StudyPlan) {
+      if (r["Completed (✔)"] !== true) continue;
+
+      const vIds = parseIdList(String(r["Vocab IDs"] || ""), "V");
+      const gIds = parseIdList(String(r["Grammar IDs"] || ""), "G");
+
+      vIds.forEach((id) => vocabSet.add(id));
+      gIds.forEach((id) => grammarSet.add(id));
+    }
+
+    return { vocabSet, grammarSet };
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -153,14 +212,82 @@ export default function App() {
               {tab === 0 && (
                 <StudyPlanTable
                   rows={workbook.StudyPlan}
-                  onChange={(StudyPlan) => setWorkbook({ ...workbook, StudyPlan })}
+                  onChange={(StudyPlan, meta) => {
+                    setWorkbook((prev) => {
+                      // Always update StudyPlan first
+                      let nextWb: WorkbookData = { ...prev, StudyPlan };
+
+                      // If we don't know what toggled, just return
+                      if (meta?.toggledDoneIndex == null) return nextWb;
+
+                      const idx = meta.toggledDoneIndex;
+                      const toggledRow = StudyPlan[idx];
+
+                      //Done checked -> mark learned/mastered
+                      if (meta.done === true) {
+                        return applyStudyDoneToVocabGrammar(nextWb, toggledRow);
+                      }
+
+                      // Done unchecked -> uncheck learned/mastered safely
+                      const { vocabSet, grammarSet } =
+                        collectCoveredIdsFromDoneStudyPlan(StudyPlan);
+
+                      // IDs that belonged to the toggled row
+                      const rowVocabIds = parseIdList(
+                        String(toggledRow["Vocab IDs"] || ""),
+                        "V",
+                      );
+                      const rowGrammarIds = parseIdList(
+                        String(toggledRow["Grammar IDs"] || ""),
+                        "G",
+                      );
+
+                      // Update Vocabulary: only unset if not covered anymore
+                      const Vocabulary = nextWb.Vocabulary.map((v) => {
+                        const id = v["Vocab ID"];
+                        if (!rowVocabIds.includes(id)) return v;
+
+                        // If still covered by some other Done row, keep it learned
+                        if (vocabSet.has(id)) return v;
+
+                        // Otherwise, unlearn + clear review dates
+                        return {
+                          ...v,
+                          "Learned (✔)": false,
+                          "Review D+1": null,
+                          "Review D+7": null,
+                          "Review D+14": null,
+                        };
+                      });
+
+                      // Update Grammar: only unset if not covered anymore
+                      const Grammar = nextWb.Grammar.map((g) => {
+                        const id = g["Grammar ID"];
+                        if (!rowGrammarIds.includes(id)) return g;
+
+                        if (grammarSet.has(id)) return g;
+
+                        return {
+                          ...g,
+                          "Mastered (✔)": false,
+                          "Review D+1": null,
+                          "Review D+7": null,
+                          "Review D+14": null,
+                        };
+                      });
+
+                      return { ...nextWb, Vocabulary, Grammar };
+                    });
+                  }}
                 />
               )}
 
               {tab === 1 && (
                 <VocabTable
                   rows={workbook.Vocabulary}
-                  onChange={(Vocabulary) => setWorkbook({ ...workbook, Vocabulary })}
+                  onChange={(Vocabulary) =>
+                    setWorkbook({ ...workbook, Vocabulary })
+                  }
                 />
               )}
 
@@ -178,8 +305,14 @@ export default function App() {
 
             <Paper sx={{ p: 2 }}>
               <Typography variant="subtitle1">Tips</Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
-                • Mark items as completed/learned/mastered and your progress will update. • Data is stored in your browser (localStorage). • Use “Download Template” to get the original Excel file.
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ mt: 0.5 }}
+              >
+                • Mark items as completed/learned/mastered and your progress
+                will update. • Data is stored in your browser (localStorage). •
+                Use “Download Template” to get the original Excel file.
               </Typography>
             </Paper>
           </Stack>
